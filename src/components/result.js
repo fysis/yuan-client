@@ -1,5 +1,4 @@
 import React from 'react'
-import yuan from '../services/yuan'
 
 const Result = ({yuan}) => {
 
