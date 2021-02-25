@@ -12,7 +12,9 @@ const getYuan = (word) => {
     return req.then(response => response.data)
 }
 
-export default {
-    getAllYuans,
+const yuanService = {
+    getAllYuans, 
     getYuan
 }
+
+export default yuanService
