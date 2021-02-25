@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import yuanService from './services/yuan'
 
-function App() {
+import Search from './components/search'
+import Result from './components/result'
+
+import './App.css'
+
+const App = () => {
+
+  const [ yuan, setYuan ] = useState({})
+  const [ searchInput, setSearchInput ] = useState('')
+  
+  useEffect(() => {
+    if (searchInput) yuanService
+      .getYuan(searchInput)
+      .then(data => setYuan(data))
+    
+      if (!searchInput) setYuan({})
+  }, [searchInput])
+
+  const searchChange = (e) => {
+    setSearchInput(e.target.value)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>源 YUAN</h1>
+      <Search changeHandler={searchChange} searchValue={searchInput}/>
+      <Result yuan={yuan[0]}/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
