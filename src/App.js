@@ -25,9 +25,11 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>源 YUAN</h1>
-      <Search changeHandler={searchChange} searchValue={searchInput}/>
-      <Result yuan={yuan[0]}/>
+        <div className="container">  
+          <h1>源 YUAN</h1>
+          <Search changeHandler={searchChange} searchValue={searchInput}/>
+          <Result yuan={yuan[0]} inputValue={searchInput}/>
+        </div>
     </div>
   )
 }
