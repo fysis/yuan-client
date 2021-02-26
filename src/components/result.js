@@ -1,48 +1,50 @@
 import React from 'react'
 
-const Result = ({yuan, inputValue}) => {
+import Character from './character'
 
+const Result = ({status, yuan}) => {
 
-    if (!yuan) {
-        if (inputValue) {
+    console.log(yuan)
+
+    if (status === 'error') {
             return (
                 <div>
                     <p className="nowords">No matches</p>
                 </div>
             )
-        }
-        else {
+    } else if (status === 'noinput') {
             return (
                 <div>
-                    <p className="noinput">Waiting for input</p>
+                    <p className="noinput">Enter a word/character</p>
                 </div>
             )
-        }
-    }
-
-    const parts = () => {
-        if (yuan.parts.length > 1) {
+    } else if (status === 'loading') {
             return (
-                <>
-                    <p><strong>{yuan.hanzi} consists of {yuan.parts.length} parts:</strong></p>
-                    <ul>
-                        {yuan.parts.map(part => <li key={part}>{part}</li>)}
-                    </ul>
-                </>
+                <div>
+                    <p className="loading">Loading...</p>
+                </div>
             )
-        }
-        else {
-            return null
-        } 
-    }
+    } else if (status === 'success') {
+        return (
+            <div>
+                <div className="main-result">
+                    <h2 className="result">{yuan.word.hanzi} <em>{yuan.word.pinyin}</em></h2>
+                    <p>{yuan.word.english}</p>
+                    <h3>Explanation</h3>
+                    <p>{yuan.word.explanation}</p>
+                </div>
+                <div className="sub-result">
+                    <h2>Characters</h2>
+                    {yuan.characters.map(character => <Character character={character}/>)}
+                </div>
+    
+            </div>
+        )
+    } 
 
     return (
         <div>
-            <h2 className="result">{yuan.hanzi} <em>{yuan.pinyin}</em></h2>
-            <h3>{yuan.english}</h3>
-            {parts()}
-            <p><strong>Origin</strong></p>
-            <p>{yuan.explanation}</p>
+            <p className="nowords">Status not resolved</p>
         </div>
     )
 }
