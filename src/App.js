@@ -1,45 +1,62 @@
 import React, { useState } from 'react'
-import yuanService from './services/yuan'
 
-import Search from './components/search'
-import Result from './components/result'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+import About from './pages/about'
+import Dictionary from './pages/dictionary'
 
 import './App.css'
+
+
 
 const App = () => {
 
   const [ yuan, setYuan ] = useState([])
   const [ searchInput, setSearchInput ] = useState('')
   const [ status, setStatus ] = useState('noinput')
-  
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    if (!searchInput) {
-      setYuan({})
-      setStatus('noinput')
-    }
-    else {
-      setStatus('loading')
-      yuanService
-      .getYuan(searchInput)
-      .then(data => {setYuan(data);setStatus('success')})
-      .catch(err => {setYuan([{error: err}]);setStatus('error')})
-    }
-  }
 
   const searchChange = (e) => {
     setSearchInput(e.target.value)
   }
 
   return (
-    <div className="app">
-        <div className="container">  
-          <h1>源 YUAN</h1>
-          <Search changeHandler={searchChange} searchValue={searchInput} submitHandler={handleSubmit}/>
-          <Result status={status} yuan={yuan}/>
-        </div>
-    </div>
+    <Router>
+      <div className="app">
+          <div className="container">
+            <h1>源 YUAN</h1>
+            {/* <Link to="/about">About</Link> */}
+            <Switch>
+              <Route path="/about" children={<About />}/>
+              <Route path="/:parameter" children={
+                <Dictionary
+                  searchChange={searchChange}
+                  searchInput={searchInput}
+                  status={status}
+                  yuan={yuan}
+                  setSearchInput={setSearchInput}
+                  setYuan={setYuan}
+                  setStatus={setStatus}
+                />
+              }/>
+              <Route path="/" children={
+                <Dictionary
+                  searchChange={searchChange}
+                  searchInput={searchInput}
+                  status={status}
+                  yuan={yuan}
+                  setSearchInput={setSearchInput}
+                  setYuan={setYuan}
+                  setStatus={setStatus}
+                />
+              }/>
+            </Switch>
+          </div>
+      </div>
+    </Router>
   )
 }
 
