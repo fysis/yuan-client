@@ -29,7 +29,7 @@ const Result = ({status, yuan}) => {
             <div>
                 <div className="main-result">
                     <h2 className="result">{yuan.word.hanzi} <em>{yuan.word.pinyin}</em></h2>
-                    <p>{yuan.word.english}</p>
+                    <p>{yuan.word.english} {yuan.word.emoji || ''}</p>
                     <h3>Explanation</h3>
                     <p>{yuan.word.explanation}</p>
                 </div>
