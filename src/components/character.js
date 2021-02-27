@@ -5,7 +5,7 @@ const Character = ({character}) => {
         if (character.parts.length > 1) {
             return (
                 <>
-                    <p><strong>{character.hanzi} consists of {character.parts.length} parts:</strong></p>
+                    <p><strong>{ character.hanzi_traditional ? character.hanzi_traditional : character.hanzi} consists of {character.parts.length} parts:</strong></p>
                     <ul>
                         {character.parts.map(part => <li key={part}>{part}</li>)}
                     </ul>
