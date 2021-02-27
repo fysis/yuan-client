@@ -9,19 +9,19 @@ const Result = ({status, yuan}) => {
     if (status === 'error') {
             return (
                 <div>
-                    <p className="nowords">No matches</p>
+                    <p className="nowords noselect">No matches</p>
                 </div>
             )
     } else if (status === 'noinput') {
             return (
                 <div>
-                    <p className="noinput">Type in a word</p>
+                    <p className="noinput noselect">Type in a word</p>
                 </div>
             )
     } else if (status === 'loading') {
             return (
                 <div>
-                    <p className="loading">Loading...</p>
+                    <p className="loading noselect">Loading...</p>
                 </div>
             )
     } else if (status === 'success') {

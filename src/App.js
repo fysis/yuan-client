@@ -9,6 +9,8 @@ import {
 import About from './pages/about'
 import Dictionary from './pages/dictionary'
 
+import Header from './components/header'
+
 import './App.css'
 
 
@@ -28,7 +30,7 @@ const App = () => {
     <Router>
       <div className="app">
           <div className="container">
-            <h1>源 YUAN</h1>
+            <Header />
             {/* <Link to="/about">About</Link> */}
             <Switch>
               <Route path="/about" children={<About />}/>
