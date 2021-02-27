@@ -1,17 +1,17 @@
 import axios from 'axios'
 
-const baseUrl = 'https://yuanproject.herokuapp.com/api/yuans'
+const baseUrl = process.env.REACT_APP_RESTURL || 'http://localhost:1234/api'
 
 let cancelToken
 
 const getAllYuans = () => {
-    const req = axios.get(baseUrl)
+    const req = axios.get(`${baseUrl}/yuans`)
     return req.then(response => response.data)
 }
 
 const getYuan = (word) => {
     cancelToken = axios.CancelToken.source();
-    const req = axios.get(`${baseUrl}/${word}`, {cancelToken: cancelToken.token})
+    const req = axios.get(`${baseUrl}/yuans/${word}`, {cancelToken: cancelToken.token})
     return req.then(response => response.data)
 }
 

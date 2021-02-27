@@ -9,7 +9,7 @@ import {
     useParams
   } from "react-router-dom";
 
-const Dictionary = ({searchChange, searchInput, status, yuan, setSearchInput, setYuan, setStatus}) => {
+const Dictionary = ({isFirst, setIsFirst, searchChange, searchInput, status, yuan, setSearchInput, setYuan, setStatus}) => {
 
     const history = useHistory()
 
@@ -18,6 +18,7 @@ const Dictionary = ({searchChange, searchInput, status, yuan, setSearchInput, se
     useEffect(() => {
       if (parameter) {
         setSearchInput(parameter)
+        setIsFirst(false)
         setStatus('loading')
         yuanService
           .getYuan(parameter)
@@ -30,6 +31,10 @@ const Dictionary = ({searchChange, searchInput, status, yuan, setSearchInput, se
 
         e.preventDefault()
     
+        setIsFirst(false)
+
+        history.push(`/${searchInput}`)
+
         if (!searchInput) {
           setYuan({})
           setStatus('noinput')
@@ -38,7 +43,7 @@ const Dictionary = ({searchChange, searchInput, status, yuan, setSearchInput, se
           setStatus('loading')
           yuanService
           .getYuan(searchInput)
-          .then(data => {setYuan(data);setStatus('success');history.push(`/${searchInput}`)})
+          .then(data => {setYuan(data);setStatus('success')})
           .catch(err => {setYuan([{error: err}]);setStatus('error')})
         }
       }
@@ -50,6 +55,7 @@ const Dictionary = ({searchChange, searchInput, status, yuan, setSearchInput, se
       <div>
         <Search changeHandler={searchChange} searchValue={searchInput} submitHandler={handleSubmit}/>
         <Result status={status} yuan={yuan}/>
+        { isFirst ? <p>Hit enter to submit. Your first query may take longer than normal.</p> : null }
       </div> 
     )
   }

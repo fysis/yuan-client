@@ -18,6 +18,7 @@ const App = () => {
   const [ yuan, setYuan ] = useState([])
   const [ searchInput, setSearchInput ] = useState('')
   const [ status, setStatus ] = useState('noinput')
+  const [ isFirst, setIsFirst ] = useState(true)
 
   const searchChange = (e) => {
     setSearchInput(e.target.value)
@@ -40,6 +41,8 @@ const App = () => {
                   setSearchInput={setSearchInput}
                   setYuan={setYuan}
                   setStatus={setStatus}
+                  isFirst={isFirst}
+                  setIsFirst={setIsFirst}
                 />
               }/>
               <Route path="/" children={
@@ -51,6 +54,8 @@ const App = () => {
                   setSearchInput={setSearchInput}
                   setYuan={setYuan}
                   setStatus={setStatus}
+                  isFirst={isFirst}
+                  setIsFirst={setIsFirst}
                 />
               }/>
             </Switch>

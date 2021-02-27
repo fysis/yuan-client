@@ -15,7 +15,7 @@ const Result = ({status, yuan}) => {
     } else if (status === 'noinput') {
             return (
                 <div>
-                    <p className="noinput">Enter a word/character</p>
+                    <p className="noinput">Type in a word</p>
                 </div>
             )
     } else if (status === 'loading') {
