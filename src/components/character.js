@@ -25,7 +25,7 @@ const Character = ({character}) => {
 
     return (
         <div className="character-section">
-            <h3 className="character-result">{character.hanzi} {character.traditional_hanzi ? character.traditional_hanzi : null}<em>{character.pinyin}</em></h3>
+            <h3 className="character-result">{character.hanzi} {character.hanzi_traditional ? character.hanzi_traditional : null}<em>{character.pinyin}</em></h3>
             <p>{character.english}</p>
             {parts()}
             <h3>Origin</h3>
