@@ -1,0 +1,28 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lettermark:hover {
+    cursor: pointer;
+}
+
+.navbar-item {
+    margin: 0.5rem;
+}
+
+.navbar-item:hover {
+    margin: 0.5rem;
+    cursor: pointer;
+    color:limegreen;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
