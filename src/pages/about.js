@@ -7,7 +7,7 @@ const About = () => (
             <br/><br></br><em>There is never an end to learning another language, the above sentence pretty much means 'forever'. I don't even expect to have it <strong>complete</strong> in the sense of a dictionary. This is my hobbyist approach.</em>
         </p>
         <br/>
-        <p>Send an email to <a href="mailto:alpkaksu@gmail.com">alpkaksu@gmail.com</a> for feedback and corrections.</p>
+        <p>Send an email to <a href="mailto:projects@alpkaanaksu.com">projects@alpkaanaksu.com</a> for feedback and corrections.</p>
         <br/>
         <h3>How I collect the data</h3>
         <p>I am not an expert in Chinese etymology (I am just learning Chinese) so I get the information from varied sources.
